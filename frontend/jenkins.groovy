@@ -2,11 +2,11 @@ pipeline{
     agent any
     stages{
         stage('code-pull'){
-           steps{
-               git branch: 'main', url: 'https://github.com/mayurmwagh/flight-reservation-app.git'
-           }
+            steps{
+                git branch: 'main', url: 'https://github.com/mayurmwagh/flight-reservation-app.git'
+            }
         }
-        stage{'build'}{
+        stage('build'){
             steps{
                 sh '''
                     cd frontend
@@ -15,11 +15,11 @@ pipeline{
                 '''
             }
         }
-        stage('Deplyo'){
-            stepd{
+        stage('Deploy'){
+            steps{
                 sh '''
-                   cd frontend
-                   aws s3 sync dist/ s3://cbz-frontend-project/
+                    cd frontend
+                    aws s3 sync dist/ s3://cbdffssdz-front12end-project-bux/
                 '''
             }
         }
