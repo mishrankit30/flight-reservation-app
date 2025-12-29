@@ -25,6 +25,24 @@ pipeline {
                 }
             }
         }
+        stage('Docker-build'){
+            steps{
+                sh '''
+                    cd FlightreservationApplication
+                    docker build . -t mishrankit30/flightreservation-new:latest
+                    docker push mishrankit30/flightreservation-new:latest
+                    docker rmi 'docker image list -aq'
+                '''
+            }
+        }
+        stage('Deplyo'){
+            steps{
+                sh '''
+                    cd FlightReservationApplication
+                    kubectl apply -f k8s/   
+                '''
+            }
+        }
     }
 }
 
