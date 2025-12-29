@@ -28,7 +28,7 @@ pipeline {
         stage('Docker-build'){
             steps{
                 sh '''
-                    cd Fcd FlightReservationApplication
+                    cd cd FlightReservationApplication
                     docker build . -t mishrankit30/flightreservation-new:latest
                     docker push mishrankit30/flightreservation-new:latest
                     docker rmi mishrankit30/flightreservation-new:latest
